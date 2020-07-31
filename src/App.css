@@ -26,15 +26,24 @@ body {
     font-size: 26px;
     margin: 30px;
     margin-top: 0px;
+    font-weight: 700;
 }
 
-.Profile {
-    display: flex;
-    justify-content: center;
-    padding: 5%;
+.Artist-card {
     margin: 2.5%;
     border-radius: 10px;
     background-color:rgba(255, 255, 255, 0.5);
+}
+
+.Profile {
+    width: 100%;
+    min-height: 100px;
+    background-color:rgba(255, 255, 255, 0.8);
+    padding: 5%;
+    border-radius: 10px 10px 0px 0px;
+    font-weight: 700;
+    align-content: flex-start;
+    border: none;
 }
 
 .Profile-wrapper{
@@ -43,6 +52,7 @@ body {
 
 .Profile-info {
     margin-left: 10px;
+    justify-content: center;
 }
 
 .Profile-img {
@@ -56,36 +66,93 @@ body {
 
 .Profile-name {
     font-size: 26px;
+    margin: 10px 0px 5px 5px;
+    text-align: left;
 }
 
 .Profile-followers {
     font-size: 18px;
     margin: 5px;
+    text-align: left;
 }
 
 .Profile-genres {
     font-size: 14px;
-    margin: 10px;
+    margin: 10px 5px;
+    text-align: left;
 }
 
 .genre {
-    margin: 5px;
+    margin: 5px 5px 5px 0px;
     padding: 5px;
     border-radius: 3px;
     background-color:rgba(225, 48, 108, 0.5);
     font-weight: 600;
 }
 
-.Card-style {
-    width: 260px;
-    min-height: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.track {
+    min-width: 100%;
+    height: 130px;
+    border-radius: 3px;
+    padding: 15px;
+    text-align: left;
+    cursor: pointer;
     font-weight: 700;
-    border-radius: 0.25rem;
-    background-color: white;
-    box-shadow: 0px 4px 6px #aaaaaa;
-    align-content: flex-start;
+    justify-content: center;
+}
+
+.track:hover {
+    background-color:rgba(255, 255, 255, 0.6);
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+}
+
+.track-Img {
+    width: 100px;
+    height: 100px;
+    border: 3px solid white;
+    border-radius: 3px;
+    object-fit: cover;
+    position: absolute;
+}
+
+.textdiv {
+    margin: 5px;
+    font-size: 20px;
+}
+
+.track-play {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.track-play-inner {
+    position: absolute;
+    text-align: center;
+    font-size: 15px;
+    background-color: black;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    color: white;
+    padding: 10px;
+    margin: 30px;
+    opacity: 0;
+    font-weight: 900;
+}
+
+.track-play-inner:hover {
+    opacity: 0.8;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.8;
+    }
 }
