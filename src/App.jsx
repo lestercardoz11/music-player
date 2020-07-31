@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, InputGroup, Button, Container, Row } from 'react-bootstrap';
+import Profile from './Profile';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            query: ''
+            query: '',
+            artist: null
         }
     }
 
@@ -17,43 +19,58 @@ class App extends Component {
         console.log('FETCH_URL', FETCH_URL);
         fetch(FETCH_URL, {
             method:'GET',
-            headers: new Headers({
+            /*headers: new Headers({
             'Authorization': 'Bearer BQBLsYmIh9...0'
-            }),
+            }),*/
             })
             .then(response => response.json())
-            .then(json => console.log('json', json))
+            .then(json => {
+                const artist = json.artists.items[0];
+                console.log('artist', artist);
+                this.setState({artist});
+            })
             .catch(error => console.log('errore', error))
     }
 
     render() {
         return(
-            <div className="App">
-                <div className="App-title">Music Player</div>
-                <FormGroup>
-                    <InputGroup>
-                    <FormControl 
-                        type="text"
-                        placeholder="Artist"
-                        value={this.state.query}
-                        onChange={event => {this.setState({query: event.target.value})}}
-                        onKeyPress={ event => {
-                            if (event.key === 'Enter') {
-                                this.search()
-                            }
-                        }}
-                    />
-                    <Button onClick={() => this.search()}>Search</Button>
-                    </InputGroup>
-                </FormGroup>
-                <div className="Profile">
-                    <div>Artist Picture</div>
-                    <div>Artist Name</div>
+            <Container className="App">
+                <div className="wrapper">
+                    <div className="App-title">Music Artists</div>
+                    <FormGroup>
+                        <InputGroup className="mb-3">
+                            <FormControl
+                                aria-label="Artist"
+                                aria-describedby="basic-addon2"
+                                type="text"
+                                placeholder="Artist"
+
+                                value={this.state.query}
+                                onChange={event => {this.setState({query: event.target.value})}}
+                                onKeyPress={ event => {
+                                    if (event.key === 'Enter') {
+                                        this.search()
+                                    }
+                                }}
+                            />
+                            <InputGroup.Append>
+                            <Button variant="outline-secondary" onClick={() => this.search()}>Search</Button>
+                            </InputGroup.Append>
+                        </InputGroup>
+                    </FormGroup>
                 </div>
-                <div className="Gallery">
-                    Gallery
-                </div>
-            </div>
+
+                {
+                    this.state.artist !== null
+                    ?
+                    <div>
+                        <Profile 
+                            artist={this.state.artist}
+                        />
+                    </div>
+                    : <div></div>
+                }
+            </Container>
         )
     }
 }
