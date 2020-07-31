@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { FormGroup, FormControl, InputGroup, Button, Container, Row } from 'react-bootstrap';
+import { FormGroup, FormControl, InputGroup, Button, Container } from 'react-bootstrap';
 import Profile from './Profile';
 
 class App extends Component {
