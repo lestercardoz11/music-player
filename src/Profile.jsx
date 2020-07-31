@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Row, Col, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 class Profile extends Component {
     render() {
